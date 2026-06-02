@@ -17,7 +17,7 @@ export function Timeline() {
           return (
             <li key={time} className="grid grid-cols-2 gap-4 items-center py-8 relative">
               <span className="absolute right-1/2 translate-x-1/2 h-2 w-2 rounded-full bg-primary" />
-              {right ? (
+              {left ? (
                 <>
                   <div />
                   <div className="text-right pr-6">
