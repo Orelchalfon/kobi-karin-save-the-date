@@ -34,19 +34,20 @@ export function Timeline() {
           );
 
           return (
-            <li key={time} className="relative grid grid-cols-2 items-center py-6">
-              {/* horizontal stub from spine to content */}
+            <li key={time} className="relative grid grid-cols-2 items-start py-6">
+              {/* horizontal stub from spine to label */}
               <span
                 aria-hidden
-                className={`absolute top-1/2 h-px w-10 bg-primary/40 ${
+                className={`absolute h-px w-10 bg-primary/40 top-[calc(6rem+0.5rem+0.625rem)] ${
                   isRight ? "right-1/2 mr-px" : "left-1/2 ml-px"
                 }`}
               />
-              {/* dot on the spine */}
+              {/* dot on the spine, aligned to the label */}
               <span
                 aria-hidden
-                className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary"
+                className="absolute left-1/2 top-[calc(6rem+0.5rem+0.625rem)] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary"
               />
+
 
               {isRight ? (
                 <>
