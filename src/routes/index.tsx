@@ -27,13 +27,17 @@ export const Route = createFileRoute("/")({
 
 function WeddingPage() {
   return (
-    <main className="mx-auto max-w-xl">
-      <Hero />
-      <Quote />
+    <main className="overflow-x-hidden">
+      <div className="mx-auto max-w-xl">
+        <Hero />
+        <Quote />
+      </div>
       <Gallery />
-      <Venue />
-      <Timeline />
-      <Parents />
+      <div className="mx-auto max-w-xl">
+        <Venue />
+        <Timeline />
+        <Parents />
+      </div>
     </main>
   );
 }

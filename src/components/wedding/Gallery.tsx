@@ -6,42 +6,19 @@ import img5 from "@/assets/couple-5.jpg.asset.json";
 
 const images = [img1.url, img2.url, img3.url, img4.url, img5.url];
 
-const ITEM_W = 256;
-const GAP = 16;
-const TRACK_W = images.length * (ITEM_W + GAP); // 1360px — whole pixels, no jump
-
-const Track = () => (
-  <div
-    className="flex shrink-0"
-    style={{ gap: `${GAP}px`, paddingRight: `${GAP}px`, width: `${TRACK_W}px` }}
-  >
-    {images.map((src, i) => (
-      <div
-        key={i}
-        className="image-item shrink-0 aspect-[3/4] overflow-hidden rounded-2xl ring-1 ring-border/60 shadow-lg"
-        style={{ width: `${ITEM_W}px` }}
-      >
-        <img
-          src={src}
-          alt={`קובי וקארין ${i + 1}`}
-          loading="eager"
-          decoding="async"
-          className="h-full w-full object-cover"
-        />
-      </div>
-    ))}
-  </div>
-);
+const loopedImages = Array.from({ length: 8 }, () => images).flat();
 
 export function Gallery() {
   return (
-    <section className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden py-12">
+    <section className="w-full overflow-hidden py-12">
       <style>{`
         @keyframes scroll-x {
           from { transform: translate3d(0, 0, 0); }
-          to   { transform: translate3d(-${TRACK_W}px, 0, 0); }
+          to   { transform: translate3d(calc(-5 * (var(--gallery-item-w) + var(--gallery-gap))), 0, 0); }
         }
         .infinite-scroll {
+          --gallery-item-w: 256px;
+          --gallery-gap: 16px;
           animation: scroll-x 30s linear infinite;
           will-change: transform;
           backface-visibility: hidden;
@@ -53,12 +30,30 @@ export function Gallery() {
         }
         .image-item { transition: transform 0.4s ease, filter 0.4s ease; }
         .image-item:hover { transform: scale(1.04); filter: brightness(1.08); }
+        @media (max-width: 520px) {
+          .infinite-scroll {
+            --gallery-item-w: 220px;
+            --gallery-gap: 14px;
+          }
+        }
       `}</style>
 
       <div className="scroll-container w-full overflow-hidden">
         <div className="infinite-scroll flex w-max">
-          <Track />
-          <Track />
+          {loopedImages.map((src, i) => (
+            <div
+              key={`${src}-${i}`}
+              className="image-item mr-[var(--gallery-gap)] aspect-[3/4] w-[var(--gallery-item-w)] shrink-0 overflow-hidden rounded-2xl ring-1 ring-border/60 shadow-lg"
+            >
+              <img
+                src={src}
+                alt={`קובי וקארין ${(i % images.length) + 1}`}
+                loading="eager"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
