@@ -39,7 +39,7 @@ export function Hero() {
           <div className="mt-4 font-hebrew text-2xl md:text-3xl tracking-wide">
             קובי <span className="font-script text-3xl mx-1">&amp;</span> קארין
           </div>
-          <div className="mt-6 font-serif-display text-2xl md:text-3xl tracking-[0.2em]">
+          <div dir="ltr" className="mt-6 font-serif-display text-2xl md:text-3xl tracking-[0.2em]">
             28 · 07 · 2026
           </div>
         </div>
