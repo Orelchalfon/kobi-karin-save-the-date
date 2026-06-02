@@ -9,7 +9,7 @@ const items = [
 
 export function Timeline() {
   return (
-    <section className="paper px-6 pb-20 text-justify">
+    <section className="paper px-6 pb-24">
       <ol className="relative mx-auto max-w-sm">
         <span className="absolute top-4 bottom-4 right-1/2 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent translate-x-px" />
         {items.map(({ time, label, Icon }, i) => {
