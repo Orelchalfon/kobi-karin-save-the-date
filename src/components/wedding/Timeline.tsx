@@ -51,13 +51,13 @@ export function Timeline() {
 
               {isRight ? (
                 <>
-                  <div />
                   {content}
+                  <div />
                 </>
               ) : (
                 <>
-                  {content}
                   <div />
+                  {content}
                 </>
               )}
             </li>
