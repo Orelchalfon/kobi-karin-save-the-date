@@ -5,8 +5,8 @@ export function Venue() {
     <section className="paper px-6 py-20 text-center">
       <VenueSketch className="mx-auto h-48 w-full max-w-md text-primary/80" />
 
-      <h2 className="mt-8 font-serif-display text-5xl md:text-6xl font-bold tracking-tight">
-        28 · 07 · 2026
+      <h2 dir="ltr" className="mt-8 font-serif-display text-5xl md:text-6xl font-bold tracking-tight">
+        28.07.26
       </h2>
 
       <div className="mt-5 space-y-1 font-hebrew text-base md:text-lg text-foreground/85">
