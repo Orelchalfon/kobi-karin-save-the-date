@@ -10,7 +10,6 @@ const items = [
 export function Timeline() {
   return (
     <section className="paper px-6 pb-20 pt-10">
-      <Divider className="mb-8" />
 
       <ol className="relative mx-auto max-w-sm">
         {/* center vertical line */}
