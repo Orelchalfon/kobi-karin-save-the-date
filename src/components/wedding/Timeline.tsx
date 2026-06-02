@@ -1,4 +1,4 @@
-import { Rings, Champagne, FlowerVase, Disco, Divider } from "./Decorations";
+import { Rings, Champagne, FlowerVase, Disco } from "./Decorations";
 
 const items = [
   { time: "19:30", label: "קבלת פנים", Icon: FlowerVase, side: "right" as const },
