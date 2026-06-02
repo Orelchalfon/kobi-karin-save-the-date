@@ -9,14 +9,14 @@ export function Parents() {
           <div className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-3">
             הורי החתן
           </div>
-          <p className="font-hebrew text-lg font-medium">עוזי ושרה</p>
-          <p className="font-hebrew text-base text-foreground/70">יחזקאל</p>
+          <p className="font-hebrew text-lg font-medium">עוזי יחזקאל</p>
+          <p className="font-hebrew text-lg font-medium">ושרה בכר</p>
         </div>
         <div>
           <div className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-3">
             הורי הכלה
           </div>
-          <p className="font-hebrew text-lg font-medium">יעקב ורבקה</p>
+          <p className="font-hebrew text-lg font-medium">מרדכי ואלה</p>
           <p className="font-hebrew text-base text-foreground/70">אלוני</p>
         </div>
       </div>
