@@ -3,7 +3,7 @@ import { Rings, Champagne, FlowerVase, Disco } from "./Decorations";
 const items = [
   { time: "19:30", label: "קבלת פנים", Icon: FlowerVase },
   { time: "20:30", label: "חופה וקידושין", Icon: Rings },
-  { time: "21:00", label: "הבאלגן מתחיל", Icon: Champagne },
+  { time: "22:00", label: "הבאלגן מתחיל", Icon: Champagne },
   { time: "02:00", label: "אפטר טראנס", Icon: Disco },
 ];
 
