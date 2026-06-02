@@ -6,18 +6,33 @@ import img5 from "@/assets/couple-5.jpg.asset.json";
 
 const images = [img1.url, img2.url, img3.url, img4.url, img5.url];
 
+const Track = () => (
+  <div className="flex gap-4 shrink-0 pr-4">
+    {images.map((src, i) => (
+      <div
+        key={i}
+        className="image-item shrink-0 w-64 aspect-[3/4] overflow-hidden rounded-2xl ring-1 ring-border/60 shadow-lg"
+      >
+        <img
+          src={src}
+          alt={`קובי וקארין ${i + 1}`}
+          loading="lazy"
+          className="h-full w-full object-cover"
+        />
+      </div>
+    ))}
+  </div>
+);
+
 export function Gallery() {
-  const loop = [...images, ...images];
   return (
     <section className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden py-12">
       <style>{`
-        @keyframes scroll-right {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+        @keyframes scroll-x {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
         }
-        .infinite-scroll {
-          animation: scroll-right 30s linear infinite;
-        }
+        .infinite-scroll { animation: scroll-x 30s linear infinite; }
         .infinite-scroll:hover { animation-play-state: paused; }
         .scroll-container {
           -webkit-mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -28,20 +43,9 @@ export function Gallery() {
       `}</style>
 
       <div className="scroll-container w-full overflow-hidden">
-        <div className="infinite-scroll flex gap-4 w-max">
-          {loop.map((src, i) => (
-            <div
-              key={i}
-              className="image-item shrink-0 w-64 aspect-[3/4] overflow-hidden rounded-2xl ring-1 ring-border/60 shadow-lg"
-            >
-              <img
-                src={src}
-                alt={`קובי וקארין ${(i % images.length) + 1}`}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          ))}
+        <div className="infinite-scroll flex w-max">
+          <Track />
+          <Track />
         </div>
       </div>
     </section>
