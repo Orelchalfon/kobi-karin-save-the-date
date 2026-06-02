@@ -41,7 +41,7 @@ export function Gallery() {
               key={i}
               className="min-w-0 flex-[0_0_100%] sm:flex-[0_0_60%] md:flex-[0_0_45%] px-3"
             >
-              <div className="relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-muted">
+              <div className="relative overflow-hidden rounded-2xl shadow-lg aspect-3/4 bg-muted">
                 <img
                   src={img.src}
                   alt={img.alt}

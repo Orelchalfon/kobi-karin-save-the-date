@@ -58,7 +58,7 @@ export function Hero() {
         <div className="flex flex-col items-center gap-4 w-full max-w-md">
           <div
             dir="ltr"
-            className="flex items-center justify-center gap-3 md:gap-5 rounded-2xl bg-white/[0.08] backdrop-blur-md px-5 py-4 ring-1 ring-white/15"
+            className="flex items-center justify-center gap-3 md:gap-5 rounded-2xl bg-white/8 backdrop-blur-md px-5 py-4 ring-1 ring-white/15"
           >
             <Cell n={days} label="ימים" />
             <span className="text-white/30 text-xl">·</span>
