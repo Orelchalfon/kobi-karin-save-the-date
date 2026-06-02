@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "30af48b7-15a9-41d3-a2e3-9dc0caee5dc0",
+  "asset_id": "962a31d4-8b51-4374-b086-0ce7bfb39302",
   "project_id": "07f4cc7a-10ac-4c8c-9d48-39c30c811d46",
-  "url": "/__l5e/assets-v1/30af48b7-15a9-41d3-a2e3-9dc0caee5dc0/venue-hero.jpg",
-  "r2_key": "a/v1/07f4cc7a-10ac-4c8c-9d48-39c30c811d46/30af48b7-15a9-41d3-a2e3-9dc0caee5dc0/venue-hero.jpg",
-  "original_filename": "venue-hero.jpg",
-  "size": 683781,
-  "content_type": "image/jpeg",
-  "created_at": "2026-06-02T18:28:56Z"
+  "url": "/__l5e/assets-v1/962a31d4-8b51-4374-b086-0ce7bfb39302/venue-hero.png",
+  "r2_key": "a/v1/07f4cc7a-10ac-4c8c-9d48-39c30c811d46/962a31d4-8b51-4374-b086-0ce7bfb39302/venue-hero.png",
+  "original_filename": "venue-hero.png",
+  "size": 2966913,
+  "content_type": "image/png",
+  "created_at": "2026-06-02T18:47:27Z"
 }
