@@ -40,7 +40,7 @@ export function Hero() {
             קובי <span className="font-script text-3xl mx-1">&amp;</span> קארין
           </div>
           <div dir="ltr" className="mt-6 font-serif-display text-2xl md:text-3xl tracking-[0.2em]">
-            28 · 07 · 2026
+            28.07.26
           </div>
         </div>
 
