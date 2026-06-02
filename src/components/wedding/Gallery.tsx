@@ -10,7 +10,7 @@ const loopedImages = Array.from({ length: 8 }, () => images).flat();
 
 export function Gallery() {
   return (
-    <section className="relative left-1/2 w-dvw -translate-x-1/2 overflow-hidden py-12">
+    <section className="w-full overflow-hidden py-12">
       <style>{`
         @keyframes scroll-x {
           from { transform: translate3d(0, 0, 0); }
