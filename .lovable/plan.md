@@ -1,70 +1,16 @@
-## הזמנת חתונה דיגיטלית - Kobi & Karin
+## Unify the champagne tower glasses
 
-עמוד יחיד, נייד, RTL בעברית, בעיצוב זהה לסרטון: רקע קרם עם טקסטורת נייר, כותרות בגופן סקריפט/סריף ירוק זית, איורי קו (טבעות, מגדל שמפניות, אגרטל פרחים, סקיצת אולם), טקסט גוף בחום כהה.
+In `src/components/wedding/Decorations.tsx`, the `Champagne` SVG currently draws 4 rows of glasses where each row uses a slightly different coupe shape and size (rows 1-2 use a small narrow bowl, rows 3-4 use wider ones). The result looks inconsistent — the top glass reads as a different object than the rest.
 
-### מבנה העמוד (מלמעלה למטה)
+### Change
 
-1. **Hero מסך מלא** - תמונת רקע של ירוק/טבע עם שכבת כהות עדינה
-   - "Kobi & Karin" באנגלית בגופן סקריפט גדול (Allura/Great Vibes)
-   - בעברית מתחת: "קובי & קארין"
-   - תאריך: 28.07.2026
-   - **טיימר ספירה לאחור חי** (ימים / שעות / דקות / שניות)
+Rewrite the `Champagne` component so every glass in the tower is the **exact same wine/coupe glass**: identical bowl path, identical stem length, identical base width. Only the X/Y position changes between rows.
 
-2. **טקסט הזמנה** - "נרגשים להזמינכם לחגוג עמנו את היום המאושר בחיינו"
+- Define one reusable `<symbol id="wineGlass">` (or a single inline group) with a classic coupe/wine bowl: rounded U-shaped bowl, thin stem, small flat base.
+- Render it 10 times in the 1-2-3-4 pyramid arrangement (top → bottom), all at the same scale.
+- Keep the existing line-art style: `fill="none"`, `stroke="currentColor"`, thin stroke, `strokeLinecap="round"`.
+- Keep a few small bubble dots above the top glass.
 
-3. **ציטוט מקראי** - "עוד ישמע בערי יהודה ובחוצות ירושלים קול ששון וקול שמחה קול חתן וקול כלה" (ירמיהו ל"ג, י"א)
+### Result
 
-4. **איור מגדל שמפניות** + כותרת "אהובים שלנו"
-   - מפריד עם איור טבעות
-   - פסקת אהבה קצרה
-   - גריד תמונות (placeholders - יוחלפו כשהמשתמש ישלח תמונות)
-
-5. **סקיצת איור של האולם** + תאריך גדול "28.07.2026"
-   - "יום שלישי, ט"ו באב התשפ"ו"
-   - "אולמי סנטרל פתח תקווה"
-   - "תוצרת הארץ 4, פתח תקווה"
-   - **מפת Google Maps מוטמעת** למיקום
-
-6. **"מה מתוכנן לכם"** - ציר זמן אנכי עם איקונים מאוירים:
-   - 19:00 - קבלת פנים (איור אגרטל פרחים)
-   - 20:30 - חופה וקידושין (איור טבעות)
-   - 21:30 - ריקודים (איור מגדל שמפניות)
-   - 02:00 - אפטר (איור עיגול דקורטיבי)
-   *(המשתמש ציין: אותם זמנים כמו בסרטון, שינוי אפשרי בהמשך)*
-
-7. **שמות ההורים** (שתי עמודות עם איור אגרטל):
-   - הורי החתן: עוזי ושרה יחזקאל
-   - הורי הכלה: יעקב ורבקה אלוני
-
-8. **כפתורי CTA תחתונים** - אישור הגעה (WhatsApp), ניווט (Waze/Maps)
-
-### תמונות האולם
-משיכת 3-4 תמונות אמיתיות של "אולמי סנטרל פתח תקווה" באמצעות חיפוש אינטרנט, העלאה ל-Lovable Assets, ושימוש בהזמנה (תמונת רקע ל-Hero + תמונות בגלריה זמנית עד שהמשתמש ישלח תמונות אישיות).
-
-### Tech & Design
-
-```text
-Stack:    TanStack Start + Tailwind v4 + RTL
-Route:    src/routes/index.tsx (עמוד יחיד)
-Fonts:    Allura (script EN), Frank Ruhl Libre (Hebrew serif), Heebo (body HE)
-Tokens:   --background: oklch(0.96 0.02 85)  /* קרם */
-          --primary:    oklch(0.36 0.06 130) /* ירוק זית כהה */
-          --foreground: oklch(0.28 0.04 50)  /* חום כהה */
-          --accent:     oklch(0.55 0.08 130) /* ירוק זית בהיר */
-Texture:  שכבת SVG noise/paper לרקע
-Icons:    איורי קו inline SVG (טבעות, מגדל שמפניות, אגרטל, סקיצת אולם)
-Motion:   fade-in עדין בגלילה, ספירה לאחור חיה ב-useEffect
-```
-
-### קבצים שייווצרו
-- `src/routes/index.tsx` - העמוד הראשי
-- `src/components/wedding/Hero.tsx` - hero + countdown
-- `src/components/wedding/Quote.tsx` - ציטוט מקראי
-- `src/components/wedding/Gallery.tsx` - גלריית תמונות
-- `src/components/wedding/Venue.tsx` - אולם + מפה
-- `src/components/wedding/Timeline.tsx` - ציר זמן הערב
-- `src/components/wedding/Parents.tsx` - שמות ההורים
-- `src/components/wedding/Decorations.tsx` - איורי SVG משותפים
-- `src/hooks/useCountdown.ts`
-- `src/styles.css` - tokens + RTL + רקע נייר
-- `src/routes/__root.tsx` - הגדרת `<html lang="he" dir="rtl">` + meta
+All 10 glasses in the tower will look like identical wine glasses, matching the clean uniform look of the reference video. No other components or styles change.
