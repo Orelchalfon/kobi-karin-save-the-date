@@ -7,44 +7,49 @@ export const Rings = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-export const Champagne = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 180 200" className={className} fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round">
-    {/* top glass */}
-    <g transform="translate(90 30)">
-      <path d="M-10 0 q10 18 0 22 q-10 -4 0 -22 z" />
-      <line x1="0" y1="22" x2="0" y2="34" />
-      <line x1="-6" y1="36" x2="6" y2="36" />
+export const Champagne = ({ className = "" }: { className?: string }) => {
+  // one unified wine glass, reused at every position
+  const Glass = ({ x, y }: { x: number; y: number }) => (
+    <g transform={`translate(${x} ${y})`}>
+      {/* bowl: rounded U-shape like a wine glass */}
+      <path d="M-13 0 Q-13 20 0 24 Q13 20 13 0" />
+      {/* rim (ellipse top) */}
+      <path d="M-13 0 Q0 6 13 0" />
+      {/* stem */}
+      <line x1="0" y1="24" x2="0" y2="38" />
+      {/* base */}
+      <line x1="-8" y1="40" x2="8" y2="40" />
     </g>
-    {/* row 2 */}
-    {[-22, 22].map((x, i) => (
-      <g key={i} transform={`translate(${90 + x} 70)`}>
-        <path d="M-12 0 q12 22 0 26 q-12 -4 0 -26 z" />
-        <line x1="0" y1="26" x2="0" y2="38" />
-        <line x1="-7" y1="40" x2="7" y2="40" />
-      </g>
-    ))}
-    {/* row 3 */}
-    {[-44, 0, 44].map((x, i) => (
-      <g key={i} transform={`translate(${90 + x} 115)`}>
-        <path d="M-13 0 q13 24 0 28 q-13 -4 0 -28 z" />
-        <line x1="0" y1="28" x2="0" y2="40" />
-        <line x1="-8" y1="42" x2="8" y2="42" />
-      </g>
-    ))}
-    {/* row 4 */}
-    {[-66, -22, 22, 66].map((x, i) => (
-      <g key={i} transform={`translate(${90 + x} 162)`}>
-        <path d="M-14 0 q14 26 0 30 q-14 -4 0 -30 z" />
-        <line x1="0" y1="30" x2="0" y2="40" />
-        <line x1="-9" y1="42" x2="9" y2="42" />
-      </g>
-    ))}
-    {/* bubbles */}
-    <circle cx="86" cy="20" r="1.5" />
-    <circle cx="94" cy="14" r="1" />
-    <circle cx="78" cy="16" r="1" />
-  </svg>
-);
+  );
+
+  const rowGap = 46;
+  const colSpacing = 32;
+  const topY = 24;
+  // pyramid rows: 1 / 2 / 3 / 4 (offsets in half-units)
+  const rows: number[][] = [[0], [-1, 1], [-2, 0, 2], [-3, -1, 1, 3]];
+
+  return (
+    <svg
+      viewBox="0 0 240 240"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {rows.map((row, ri) =>
+        row.map((c, ci) => (
+          <Glass key={`${ri}-${ci}`} x={120 + (c * colSpacing) / 2} y={topY + ri * rowGap} />
+        ))
+      )}
+      {/* bubbles above the top glass */}
+      <circle cx="114" cy="14" r="1.4" />
+      <circle cx="124" cy="8" r="1" />
+      <circle cx="106" cy="10" r="1" />
+    </svg>
+  );
+};
 
 export const FlowerVase = ({ className = "" }: { className?: string }) => (
   <svg viewBox="0 0 140 160" className={className} fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round">
