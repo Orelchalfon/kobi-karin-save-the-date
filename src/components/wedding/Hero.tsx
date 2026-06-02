@@ -1,8 +1,8 @@
 import { useCountdown } from "@/hooks/useCountdown";
-import heroImg from "@/assets/venue-hero.jpg.asset.json";
+import heroImg from "@/assets/venue-hero.jpg";
 
 const Cell = ({ n, label }: { n: number; label: string }) => (
-  <div className="flex flex-col items-center min-w-[56px]">
+  <div className="flex flex-col items-center min-w-14">
     <span className="font-serif-display text-3xl md:text-4xl font-medium text-white tabular-nums leading-none">
       {String(n).padStart(2, "0")}
     </span>
@@ -13,16 +13,16 @@ const Cell = ({ n, label }: { n: number; label: string }) => (
 export function Hero() {
   const { days, hours, minutes, seconds } = useCountdown();
   return (
-    <section className="relative min-h-[100svh] w-full overflow-hidden">
+    <section className="relative min-h-svh w-full overflow-hidden">
       <img
-        src={heroImg.url}
+        src={heroImg}
         alt="אולמי סנטרל פתח תקווה"
         className="absolute inset-0 h-full w-full object-cover scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/80" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(0,0,0,0.45)_100%)]" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/65 via-black/35 to-black/80" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.45)_100%)]" />
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-6 py-10 text-center text-white">
+      <div className="relative z-10 flex min-h-svh flex-col items-center justify-between px-6 py-10 text-center text-white">
         <div className="font-serif-display tracking-[0.55em] text-[11px] opacity-75">
           SAVE&nbsp;THE&nbsp;DATE
         </div>
