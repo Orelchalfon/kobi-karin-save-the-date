@@ -9,29 +9,29 @@ const items = [
 
 export function Timeline() {
   return (
-    <section className="paper px-6 pb-20">
+    <section className="paper px-6 pb-24">
       <ol className="relative mx-auto max-w-sm">
-        <span className="absolute top-2 bottom-2 right-1/2 w-px bg-primary/30 translate-x-px" />
+        <span className="absolute top-4 bottom-4 right-1/2 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent translate-x-px" />
         {items.map(({ time, label, Icon }, i) => {
           const left = i % 2 === 0;
           return (
-            <li key={time} className="grid grid-cols-2 gap-4 items-center py-8 relative">
-              <span className="absolute right-1/2 translate-x-1/2 h-2 w-2 rounded-full bg-primary" />
+            <li key={time} className="grid grid-cols-2 gap-6 items-center py-7 relative">
+              <span className="absolute right-1/2 translate-x-1/2 h-3 w-3 rounded-full bg-primary ring-4 ring-card shadow-sm" />
               {left ? (
                 <>
                   <div />
                   <div className="text-right pr-6">
-                    <Icon className="h-16 w-16 text-primary/80 mr-auto mb-2" />
-                    <div className="font-hebrew text-xl font-bold ink">{label}</div>
-                    <div className="font-serif-display text-lg text-foreground/70">{time}</div>
+                    <Icon className="h-14 w-14 text-primary/80 mr-auto mb-2" />
+                    <div className="font-hebrew text-xl font-bold ink leading-tight">{label}</div>
+                    <div className="font-serif-display text-base text-foreground/65 tabular-nums mt-0.5" dir="ltr">{time}</div>
                   </div>
                 </>
               ) : (
                 <>
                   <div className="text-left pl-6">
-                    <Icon className="h-16 w-16 text-primary/80 ml-auto mb-2" />
-                    <div className="font-hebrew text-xl font-bold ink">{label}</div>
-                    <div className="font-serif-display text-lg text-foreground/70">{time}</div>
+                    <Icon className="h-14 w-14 text-primary/80 ml-auto mb-2" />
+                    <div className="font-hebrew text-xl font-bold ink leading-tight">{label}</div>
+                    <div className="font-serif-display text-base text-foreground/65 tabular-nums mt-0.5" dir="ltr">{time}</div>
                   </div>
                   <div />
                 </>

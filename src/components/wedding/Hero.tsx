@@ -2,11 +2,11 @@ import { useCountdown } from "@/hooks/useCountdown";
 import heroImg from "@/assets/venue-hero.jpg.asset.json";
 
 const Cell = ({ n, label }: { n: number; label: string }) => (
-  <div className="flex flex-col items-center min-w-[60px]">
-    <span className="font-serif-display text-3xl md:text-4xl font-medium text-white tabular-nums">
+  <div className="flex flex-col items-center min-w-[56px]">
+    <span className="font-serif-display text-3xl md:text-4xl font-medium text-white tabular-nums leading-none">
       {String(n).padStart(2, "0")}
     </span>
-    <span className="text-[10px] tracking-[0.25em] uppercase text-white/70 mt-1">{label}</span>
+    <span className="text-[10px] tracking-[0.28em] uppercase text-white/65 mt-2">{label}</span>
   </div>
 );
 
@@ -17,44 +17,58 @@ export function Hero() {
       <img
         src={heroImg.url}
         alt="אולמי סנטרל פתח תקווה"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/70" />
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-6 py-12 text-center text-white">
-        <div className="font-serif-display tracking-[0.5em] text-xs opacity-80">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/80" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(0,0,0,0.45)_100%)]" />
+
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-6 py-10 text-center text-white">
+        <div className="font-serif-display tracking-[0.55em] text-[11px] opacity-75">
           SAVE&nbsp;THE&nbsp;DATE
         </div>
 
-        <div className="flex flex-col items-center gap-4">
-          <div className="font-hebrew text-sm tracking-[0.4em] opacity-90">
-            ב"ה
+        <div className="flex flex-col items-center gap-3">
+          <div className="font-hebrew text-xs tracking-[0.5em] opacity-80">ב"ה</div>
+
+          <div className="flex items-center gap-5 mt-2">
+            <span className="h-px w-10 bg-white/40" />
+            <span className="font-serif-display italic text-sm tracking-widest opacity-80">the wedding of</span>
+            <span className="h-px w-10 bg-white/40" />
           </div>
-          <h1 className="font-script text-7xl md:text-8xl leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+
+          <h1 className="font-script text-[5.5rem] md:text-[7rem] leading-[0.9] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)] mt-2">
             Kobi
           </h1>
-          <span className="font-script text-5xl md:text-6xl -my-3 opacity-90">&amp;</span>
-          <h1 className="font-script text-7xl md:text-8xl leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+          <span className="font-script text-5xl md:text-6xl -my-4 opacity-85">&amp;</span>
+          <h1 className="font-script text-[5.5rem] md:text-[7rem] leading-[0.9] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
             Karin
           </h1>
-          <div className="mt-4 font-hebrew text-2xl md:text-3xl tracking-wide">
-            קובי <span className="font-script text-3xl mx-1">&amp;</span> קארין
+
+          <div className="mt-5 font-hebrew text-xl md:text-2xl tracking-[0.15em] opacity-95">
+            קובי <span className="opacity-60 mx-1">·</span> קארין
           </div>
-          <div dir="ltr" className="mt-6 font-serif-display text-2xl md:text-3xl tracking-[0.2em]">
-            28.07.26
+
+          <div dir="ltr" className="mt-7 flex items-center gap-4">
+            <span className="h-px w-8 bg-white/50" />
+            <span className="font-serif-display text-xl md:text-2xl tracking-[0.35em]">28 . 07 . 26</span>
+            <span className="h-px w-8 bg-white/50" />
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-4 w-full max-w-md">
-          <div dir="ltr" className="flex items-center justify-center gap-4 md:gap-6 rounded-2xl bg-white/10 backdrop-blur-sm px-6 py-4 ring-1 ring-white/20">
+          <div
+            dir="ltr"
+            className="flex items-center justify-center gap-3 md:gap-5 rounded-2xl bg-white/[0.08] backdrop-blur-md px-5 py-4 ring-1 ring-white/15"
+          >
             <Cell n={days} label="ימים" />
-            <span className="text-white/40 text-2xl">·</span>
+            <span className="text-white/30 text-xl">·</span>
             <Cell n={hours} label="שעות" />
-            <span className="text-white/40 text-2xl">·</span>
+            <span className="text-white/30 text-xl">·</span>
             <Cell n={minutes} label="דקות" />
-            <span className="text-white/40 text-2xl">·</span>
+            <span className="text-white/30 text-xl">·</span>
             <Cell n={seconds} label="שניות" />
           </div>
-          <div className="font-hebrew text-sm opacity-80 tracking-wider">
+          <div className="font-hebrew text-sm opacity-80 tracking-[0.2em]">
             אולמי סנטרל · פתח תקווה
           </div>
         </div>

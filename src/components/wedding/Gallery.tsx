@@ -7,20 +7,20 @@ import img5 from "@/assets/couple-5.jpg.asset.json";
 const imgs = [img1, img2, img3, img4, img5];
 
 export function Gallery() {
-  // duplicate the list so the marquee loops seamlessly
   const loop = [...imgs, ...imgs];
   return (
-    <section className="px-4 pb-16 overflow-hidden">
-      <div className="group relative max-w-2xl mx-auto overflow-hidden">
-        <div className="flex gap-3 animate-[marquee_30s_linear_infinite] w-max">
+    <section className="px-0 pb-20">
+      <div className="relative max-w-2xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <div className="flex gap-4 animate-[marquee_40s_linear_infinite] w-max hover:[animation-play-state:paused]">
           {loop.map((im, i) => (
             <div
               key={i}
-              className="shrink-0 w-56 aspect-[3/4] overflow-hidden rounded-lg ring-1 ring-border shadow-sm"
+              className="shrink-0 w-56 aspect-[3/4] overflow-hidden rounded-xl ring-1 ring-border/60 shadow-md"
             >
               <img
                 src={im.url}
                 alt="קובי וקארין"
+                loading="lazy"
                 className="h-full w-full object-cover"
               />
             </div>

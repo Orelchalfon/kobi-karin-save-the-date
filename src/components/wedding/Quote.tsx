@@ -2,28 +2,30 @@ import { Champagne, Divider } from "./Decorations";
 
 export function Quote() {
   return (
-    <section className="paper px-6 py-20 text-center">
+    <section className="paper px-6 pt-20 pb-16 text-center">
       <p className="font-hebrew text-lg md:text-xl leading-relaxed text-foreground/85 max-w-md mx-auto">
         נרגשים להזמינכם לחגוג עמנו
         <br />
         את היום המאושר בחיינו
       </p>
 
-      <div className="mt-12 mx-auto max-w-md">
-        <p className="font-hebrew text-base md:text-lg leading-loose text-foreground/75">
+      <Divider className="mt-10" />
+
+      <div className="mt-10 mx-auto max-w-md">
+        <p className="font-hebrew text-base md:text-lg leading-loose text-foreground/75 italic">
           עוד יִשָּׁמַע בְּעָרֵי יְהוּדָה וּבְחֻצוֹת יְרוּשָׁלָיִם
           <br />
           קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה
           <br />
           קוֹל חָתָן וְקוֹל כַּלָּה
         </p>
-        <p className="mt-3 text-xs tracking-widest text-muted-foreground">
-          (ירמיהו ל"ג, י"א)
+        <p className="mt-3 text-[11px] tracking-[0.3em] text-muted-foreground uppercase">
+          ירמיהו ל"ג · י"א
         </p>
       </div>
 
-      <Champagne className="mx-auto mt-14 h-40 w-40 text-primary" />
-      <h2 className="mt-6 font-hebrew text-4xl md:text-5xl font-bold">אהובים שלנו</h2>
+      <Champagne className="mx-auto mt-16 h-32 w-32 text-primary" />
+      <h2 className="mt-4 font-hebrew text-4xl md:text-5xl font-bold ink">אהובים שלנו</h2>
       <Divider className="mt-6" />
 
       <p className="mt-10 font-hebrew text-base leading-loose text-foreground/80 max-w-md mx-auto">
