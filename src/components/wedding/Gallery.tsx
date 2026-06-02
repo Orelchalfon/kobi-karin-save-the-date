@@ -1,60 +1,72 @@
-import img1 from "@/assets/couple-1.jpg.asset.json";
-import img2 from "@/assets/couple-2.jpg.asset.json";
-import img3 from "@/assets/couple-3.jpg.asset.json";
-import img4 from "@/assets/couple-4.jpg.asset.json";
-import img5 from "@/assets/couple-5.jpg.asset.json";
+import { useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import img1 from "@/assets/gallery-1.jpeg.asset.json";
+import img2 from "@/assets/gallery-2.jpeg.asset.json";
+import img3 from "@/assets/gallery-3.jpeg.asset.json";
+import img4 from "@/assets/gallery-4.jpeg.asset.json";
+import img5 from "@/assets/gallery-5.jpeg.asset.json";
 
-const images = [img1.url, img2.url, img3.url, img4.url, img5.url];
-
-const loopedImages = Array.from({ length: 8 }, () => images).flat();
+const images = [
+  { src: img4.url, alt: "קובי וקארין · Save the date" },
+  { src: img5.url, alt: "קובי וקארין · שקיעה בים" },
+  { src: img2.url, alt: "קובי וקארין · טבעת" },
+  { src: img3.url, alt: "קובי וקארין · לחיים" },
+  { src: img1.url, alt: "קובי וקארין · רגע ההצעה" },
+];
 
 export function Gallery() {
-  return (
-    <section className="w-full overflow-hidden py-12">
-      <style>{`
-        @keyframes scroll-x {
-          from { transform: translate3d(0, 0, 0); }
-          to   { transform: translate3d(calc(-5 * (var(--gallery-item-w) + var(--gallery-gap))), 0, 0); }
-        }
-        .infinite-scroll {
-          --gallery-item-w: 256px;
-          --gallery-gap: 16px;
-          animation: scroll-x 30s linear infinite;
-          will-change: transform;
-          backface-visibility: hidden;
-        }
-        .infinite-scroll:hover { animation-play-state: paused; }
-        .scroll-container {
-          -webkit-mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
-                  mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
-        }
-        .image-item { transition: transform 0.4s ease, filter 0.4s ease; }
-        .image-item:hover { transform: scale(1.04); filter: brightness(1.08); }
-        @media (max-width: 520px) {
-          .infinite-scroll {
-            --gallery-item-w: 220px;
-            --gallery-gap: 14px;
-          }
-        }
-      `}</style>
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "center", direction: "rtl" },
+    [Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true })],
+  );
+  const [selected, setSelected] = useState(0);
 
-      <div className="scroll-container w-full overflow-hidden">
-        <div className="infinite-scroll flex w-max">
-          {loopedImages.map((src, i) => (
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelected(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
+  return (
+    <section aria-label="גלריית תמונות" className="py-12 sm:py-16">
+      <div className="overflow-hidden" ref={emblaRef} dir="rtl">
+        <div className="flex">
+          {images.map((img, i) => (
             <div
-              key={`${src}-${i}`}
-              className="image-item mr-[var(--gallery-gap)] aspect-[3/4] w-[var(--gallery-item-w)] shrink-0 overflow-hidden rounded-2xl ring-1 ring-border/60 shadow-lg"
+              key={i}
+              className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_60%] md:flex-[0_0_45%] px-2"
             >
-              <img
-                src={src}
-                alt={`קובי וקארין ${(i % images.length) + 1}`}
-                loading="eager"
-                decoding="async"
-                className="h-full w-full object-cover"
-              />
+              <div className="relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] bg-muted">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="mt-5 flex justify-center gap-2">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`עבור לתמונה ${i + 1}`}
+            onClick={() => emblaApi?.scrollTo(i)}
+            className={`h-1.5 rounded-full transition-all ${
+              selected === i ? "w-6 bg-primary" : "w-1.5 bg-muted-foreground/40"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
